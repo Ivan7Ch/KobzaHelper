@@ -214,11 +214,17 @@
                                     <action selector="excludedTextSearch" destination="eEC-G9-vF4" eventType="touchUpInside" id="I0p-eH-fjt"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="U9f-P9-CIT">
+                                <rect key="frame" x="197" y="277" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ItB-Yq-Du4"/>
                         <color key="backgroundColor" red="0.21176470588235294" green="0.14117647058823529" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JhI-5p-PC0" firstAttribute="leading" secondItem="ItB-Yq-Du4" secondAttribute="leading" constant="17" id="1LN-rd-6Wd"/>
+                            <constraint firstItem="U9f-P9-CIT" firstAttribute="centerX" secondItem="hcB-0l-e4z" secondAttribute="centerX" id="2AB-JU-FUp"/>
+                            <constraint firstItem="U9f-P9-CIT" firstAttribute="top" secondItem="JhI-5p-PC0" secondAttribute="bottom" constant="17" id="3fV-n9-g6k"/>
                             <constraint firstItem="7UG-gY-evQ" firstAttribute="top" secondItem="ItB-Yq-Du4" secondAttribute="top" constant="10" id="4k7-Fa-V6d"/>
                             <constraint firstItem="7UG-gY-evQ" firstAttribute="centerX" secondItem="hcB-0l-e4z" secondAttribute="centerX" id="4wM-Wi-083"/>
                             <constraint firstItem="JxX-H2-nai" firstAttribute="leading" secondItem="ItB-Yq-Du4" secondAttribute="leading" constant="10" id="5cc-Gr-XY1"/>
@@ -250,6 +256,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="U9f-P9-CIT" id="vvi-zy-kBl"/>
                         <outlet property="collectionView" destination="7UG-gY-evQ" id="k5t-ms-Kni"/>
                         <outlet property="excludeField" destination="X5E-Z3-NOe" id="vUm-XO-nDH"/>
                         <outlet property="infoLabel" destination="JhI-5p-PC0" id="LvE-i1-unZ"/>

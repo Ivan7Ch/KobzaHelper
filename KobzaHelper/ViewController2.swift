@@ -16,6 +16,7 @@ class ViewController2: UIViewController {
     @IBOutlet weak var excludeField: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var viewModel: ViewModel!
     var validationLetters = [Letter]()
@@ -38,6 +39,11 @@ class ViewController2: UIViewController {
         searchButton.setTitle("", for: .normal)
         
         excludeField.attributedPlaceholder = NSAttributedString(string: "_", attributes: attributes)
+        
+        activityIndicator.hidesWhenStopped = true
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.startAnimating()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,15 +57,31 @@ class ViewController2: UIViewController {
     }
     
     @IBAction func excludedTextSearch() {
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.startAnimating()
+        }
+        resultField.text = ""
+        activityIndicator.startAnimating()
+        
         validationLetters.removeAll(where: { $0.type == .black })
         
         for i in Array(excludeText) {
             validationLetters.append(Letter(char: String(i), location: 0, type: .black))
         }
         
-        viewModel = ViewModel(delegate: self, validationLetters: validationLetters)
-        resultField.text = viewModel.arr.joined(separator: ", ")
-        infoLabel.text = "Знайдено: \(viewModel.arr.count)"
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            if let self = self {
+                self.viewModel = ViewModel(delegate: self, validationLetters: self.validationLetters)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
+                if let self = self {
+                    self.resultField.text = self.viewModel.arr.joined(separator: ", ")
+                    self.infoLabel.text = "Знайдено: \(self.viewModel.arr.count)"
+                    self.activityIndicator.stopAnimating()
+                }
+            })
+        }
     }
     
     @IBAction func clearButtonAction() {
