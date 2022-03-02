@@ -79,6 +79,7 @@ class ViewController2: UIViewController {
                     self.resultField.text = self.viewModel.arr.joined(separator: ", ")
                     self.infoLabel.text = "Знайдено: \(self.viewModel.arr.count)"
                     self.activityIndicator.stopAnimating()
+                    self.view.endEditing(true)
                 }
             })
         }
