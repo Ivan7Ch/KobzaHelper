@@ -146,6 +146,9 @@ class ViewModel {
             case .yellow:
                 arr = filterIncludedYellow(letter: i, arr)
             case .black:
+                if selectedLetters.contains(where: { $0.char == i.char && $0.type != .black }) {
+                    continue
+                }
                 arr = filterExcluded(letter: i, arr)
             }
         }
