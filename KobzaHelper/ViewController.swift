@@ -27,10 +27,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapOnReload() {
+        
         viewModel.reloadGame()
     }
     
     @IBAction func didTapOnNewRow() {
+        
         viewModel.getNewWord()
         updateViews()
     }
@@ -40,8 +42,7 @@ class ViewController: UIViewController {
 extension ViewController: GameDelegate {
     
     func updateViews() {
-//        let word = viewModel.getWord()
-
+        
         infoLabel.text = "Доступні варіанти слів(\(viewModel.getPossibleVariantsAmount())):"
         
         allWordsLabel.text = viewModel.allWordsText()
