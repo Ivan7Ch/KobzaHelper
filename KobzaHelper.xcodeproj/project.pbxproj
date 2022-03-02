@@ -312,6 +312,7 @@
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KobzaHelper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Кобза Помічник";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -341,6 +342,7 @@
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KobzaHelper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Кобза Помічник";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
