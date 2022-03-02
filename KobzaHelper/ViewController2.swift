@@ -25,8 +25,6 @@ class ViewController2: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        viewModel = ViewModel(delegate: self)
 
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -40,6 +38,10 @@ class ViewController2: UIViewController {
         searchButton.setTitle("", for: .normal)
         
         excludeField.attributedPlaceholder = NSAttributedString(string: "_", attributes: attributes)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         excludedTextSearch()
     }
