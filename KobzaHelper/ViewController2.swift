@@ -45,12 +45,19 @@ class ViewController2: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.activityIndicator.startAnimating()
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        view.addGestureRecognizer(tap)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         excludedTextSearch()
+    }
+    
+    @objc func tapAction() {
+        view.endEditing(true)
     }
     
     @IBAction func excludeLettersEditing(_ sender: UITextField) {
@@ -80,7 +87,6 @@ class ViewController2: UIViewController {
                     self.resultField.text = self.viewModel.arr.joined(separator: ", ")
                     self.infoLabel.text = "Знайдено: \(self.viewModel.arr.count)"
                     self.activityIndicator.stopAnimating()
-                    self.view.endEditing(true)
                 }
             })
         }
@@ -208,5 +214,7 @@ class GreenInputCollectionViewCell: UICollectionViewCell {
         case .black:
             return
         }
+        
+        vc.excludedTextSearch()
     }
 }
