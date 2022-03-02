@@ -31,6 +31,7 @@ class ViewController2: UIViewController {
         collectionView.dataSource = self
         
         resultField.isEditable = false
+        resultField.isSelectable = false
         infoLabel.text = ""
         resultField.layer.cornerRadius = 5
         resultField.textColor = .white

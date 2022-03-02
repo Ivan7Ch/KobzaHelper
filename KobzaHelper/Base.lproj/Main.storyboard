@@ -252,6 +252,9 @@
                             </barButtonItem>
                             <barButtonItem image="questionmark.circle" catalog="system" id="d5y-YX-uYf">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="273-H2-gAJ" kind="showDetail" id="YOY-jL-wJs"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -267,6 +270,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b57-cB-tqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2798.5507246376815" y="77.678571428571431"/>
+        </scene>
+        <!--How To Use View Controller-->
+        <scene sceneID="wxa-Im-HX7">
+            <objects>
+                <viewController id="273-H2-gAJ" customClass="HowToUseViewController" customModule="KobzaHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cyt-7q-922">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Як користуватися?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnC-Bj-Btc">
+                                <rect key="frame" x="10" y="15" width="394" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XSz-vX-FYm">
+                                <rect key="frame" x="10" y="51.5" width="394" height="746.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">1. Введіть в зелені поля ті літери, які є в загаданому слові, та знаходяться у правильному місці.
+
+2. Введіть в жовті поля ті літери, які є у загаданому слові, але знаходяться не у правильному місці.
+
+3. Введіть у велике поле вводу всі літери, яких немає в загаданому слові.
+
+4. Натисніть кнопку пошуку, щоб побачити всі пропоновані слова, які відповідають введеним фільтрам.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E9J-Hb-J2p"/>
+                        <color key="backgroundColor" red="0.21176470589999999" green="0.14117647059999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="QnC-Bj-Btc" firstAttribute="centerX" secondItem="cyt-7q-922" secondAttribute="centerX" id="2Il-i7-OGy"/>
+                            <constraint firstItem="E9J-Hb-J2p" firstAttribute="bottom" secondItem="XSz-vX-FYm" secondAttribute="bottom" constant="10" id="9fv-BE-w8s"/>
+                            <constraint firstItem="XSz-vX-FYm" firstAttribute="leading" secondItem="E9J-Hb-J2p" secondAttribute="leading" constant="10" id="auB-md-QiL"/>
+                            <constraint firstItem="E9J-Hb-J2p" firstAttribute="trailing" secondItem="XSz-vX-FYm" secondAttribute="trailing" constant="10" id="i9t-p8-sfz"/>
+                            <constraint firstItem="QnC-Bj-Btc" firstAttribute="leading" secondItem="E9J-Hb-J2p" secondAttribute="leading" constant="10" id="l0y-SN-4Ua"/>
+                            <constraint firstItem="XSz-vX-FYm" firstAttribute="top" secondItem="QnC-Bj-Btc" secondAttribute="bottom" constant="10" id="l1p-zg-Raf"/>
+                            <constraint firstItem="QnC-Bj-Btc" firstAttribute="top" secondItem="E9J-Hb-J2p" secondAttribute="top" constant="15" id="uiY-YU-kxL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="XSz-vX-FYm" id="50A-S6-BI8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYu-7V-yBv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3504" y="78"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="Kfj-pT-2aA">
@@ -374,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpq-P9-oVx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3521.739130434783" y="77.678571428571431"/>
+            <point key="canvasLocation" x="2799" y="727"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PT5-KK-5tL">
