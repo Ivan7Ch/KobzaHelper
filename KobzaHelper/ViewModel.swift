@@ -39,14 +39,11 @@ class ViewModel {
     var selectedLetters = [Letter]()
     var topWord = [Letter]()
     
-    private var lettersDictionary = [String : Int]()
     private var initialArray = [String]()
     
     init(delegate: GameDelegate, validationLetters: [Letter] = []) {
         
         self.delegate = delegate
-        
-        setupFrequentArr()
         
         let arrWithDublicates = DataSource.words.components(separatedBy: .newlines).map({ String($0) })
         let set = Set(arrWithDublicates)
@@ -164,27 +161,10 @@ class ViewModel {
         
         let set = Set(Array(str))
         for i in set {
-            res += lettersDictionary[String(i)] ?? 0
+            res += DataSource.lettersDictionary[String(i)] ?? 0
         }
         
         return res
-    }
-    
-    private func setupFrequentArr() {
-        
-        var str = DataSource.words.replacingOccurrences(of: " ", with: "")
-        str = str.replacingOccurrences(of: "\'", with: "")
-        str = str.lowercased()
-        
-        let arr = Array(str)
-        for item in arr {
-            let i = String(item)
-            if lettersDictionary[i] == nil {
-                lettersDictionary[i] = 1
-            } else {
-                lettersDictionary[i]! += 1
-            }
-        }
     }
     
     private func filterIncludedGreen(letter: Letter, _ array: [String]) -> [String] {
