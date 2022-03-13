@@ -12,43 +12,22 @@ protocol GameDelegate {
     func updateViews()
 }
 
-enum LetterType {
-    
-    case green
-    case yellow
-    case black
-}
-
-struct Letter {
-    
-    let char: String
-    let location: Int
-    let type: LetterType
-    
-    static var standart: Letter {
-        return Letter(char: "_", location: 0, type: .black)
-    }
-}
-
 class ViewModel {
     
     let delegate: GameDelegate
     
-    var arr = [String]()
+    var arr = [Word]()
     
     var selectedLetters = [Letter]()
     var topWord = [Letter]()
     
-    private var initialArray = [String]()
+    private var initialArray = [Word]()
     
     init(delegate: GameDelegate, validationLetters: [Letter] = []) {
         
         self.delegate = delegate
         
-        let arrWithDublicates = DataSource.words.components(separatedBy: .newlines).map({ String($0) })
-        let set = Set(arrWithDublicates)
-    
-        initialArray = Array(set)
+        initialArray = DataSource.words
         arr = initialArray
         
         selectedLetters = validationLetters
@@ -69,8 +48,7 @@ class ViewModel {
         
         
         var word = [Letter]()
-        let arrayOfChars = Array(item).map({ String($0) })
-        for (index, value) in arrayOfChars.enumerated() {
+        for (index, value) in item.letters.enumerated() {
             let newLetter = Letter(char: value, location: index, type: .black)
             word.append(newLetter)
         }
@@ -99,7 +77,7 @@ class ViewModel {
     
     func allWordsText() -> String {
         
-        return arr.joined(separator: ", ")
+        return arr.joinedString()
     }
     
     func didTap(at index: Int) {
@@ -153,27 +131,15 @@ class ViewModel {
     
     private func sortArr() {
         
-        arr = arr.sorted(by: { getVolumeOfWord(str: $0) > getVolumeOfWord(str: $1) })
+        arr = arr.primarySorted()
     }
     
-    private func getVolumeOfWord(str: String) -> Int {
-        var res = 0
+    private func filterIncludedGreen(letter: Letter, _ array: [Word]) -> [Word] {
         
-        let set = Set(Array(str))
-        for i in set {
-            res += DataSource.lettersDictionary[String(i)] ?? 0
-        }
-        
-        return res
-    }
-    
-    private func filterIncludedGreen(letter: Letter, _ array: [String]) -> [String] {
-        
-        var result = [String]()
+        var result = [Word]()
         
         for i in array {
-            let wordArray = Array(String(i))
-            if wordArray[letter.location] == Character(letter.char) {
+            if i.letters[letter.location] == letter.char {
                 result.append(i)
             }
         }
@@ -181,13 +147,12 @@ class ViewModel {
         return result
     }
     
-    private func filterIncludedYellow(letter: Letter, _ array: [String]) -> [String] {
+    private func filterIncludedYellow(letter: Letter, _ array: [Word]) -> [Word] {
         
-        var result = [String]()
+        var result = [Word]()
         
         for i in array {
-            let wordArray = Array(String(i))
-            if i.contains(letter.char), wordArray[letter.location] != Character(letter.char) {
+            if i.letters.contains(letter.char), i.letters[letter.location] != letter.char {
                 result.append(i)
             }
         }
@@ -195,12 +160,11 @@ class ViewModel {
         return result
     }
 
-    private func filterExcluded(letter: Letter, _ array: [String]) -> [String] {
-        var result = [String]()
+    private func filterExcluded(letter: Letter, _ array: [Word]) -> [Word] {
+        var result = [Word]()
         
         for i in array {
-            let wordArray = Array(String(i))
-            if !wordArray.contains(Character(letter.char)) {
+            if !i.letters.contains(letter.char) {
                 result.append(i)
             }
         }

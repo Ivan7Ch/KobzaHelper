@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.activityIndicator.startAnimating()
         }
-        resultField.text = ""
+//        resultField.text = ""
         activityIndicator.startAnimating()
         
         validationLetters.removeAll(where: { $0.type == .black })
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async { [weak self] in
                 if let self = self {
-                    self.resultField.text = self.viewModel.arr.joined(separator: ", ")
+                    self.resultField.text = self.viewModel.arr.joinedString()
                     self.infoLabel.text = "Знайдено: \(self.viewModel.arr.count)"
                     self.activityIndicator.stopAnimating()
                 }

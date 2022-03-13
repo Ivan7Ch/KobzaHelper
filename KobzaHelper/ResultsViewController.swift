@@ -12,9 +12,9 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet var wordLabels: [UILabel]!
     @IBOutlet weak var indexLabel: UILabel!
     
-    func setup(ind: Int, word: String, greenIndexes: [Int]) {
+    func setup(ind: Int, word: Word, greenIndexes: [Int]) {
         indexLabel.text = String(format: "%04d", ind)
-        for (ind, val) in Array(word).enumerated() {
+        for (ind, val) in word.letters.enumerated() {
             let l = wordLabels[ind]
             l.text = String(val).uppercased()
             l.layer.masksToBounds = true
@@ -33,7 +33,7 @@ class ResultsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var words = [String]() {
+    var words = [Word]() {
         didSet {
             title = "Found: \(words.count)"
         }
