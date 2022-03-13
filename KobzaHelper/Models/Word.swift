@@ -41,7 +41,13 @@ extension Array where Element == Word {
         return self.map({ $0.string }).joined(separator: ", ")
     }
     
-    func primarySorted() -> [Word] {
-        return self.sorted(by: { $0.rating > $1.rating })
+    func sorted(by type: SortingType) -> [Word] {
+        
+        switch type {
+        case .ranking:
+            return self.sorted(by: { $0.rating > $1.rating })
+        case .alphabetical:
+            return self.sorted(by: { $0.string < $1.string })
+        }
     }
 }

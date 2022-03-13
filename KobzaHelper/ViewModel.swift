@@ -9,6 +9,7 @@ import Foundation
 
 protocol GameDelegate {
     
+    var sortingType: SortingType { get }
     func updateViews()
 }
 
@@ -131,7 +132,7 @@ class ViewModel {
     
     private func sortArr() {
         
-        arr = arr.primarySorted()
+        arr = arr.sorted(by: delegate.sortingType)
     }
     
     private func filterIncludedGreen(letter: Letter, _ array: [Word]) -> [Word] {

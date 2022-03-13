@@ -9,6 +9,12 @@ import UIKit
 
 let attributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray4]
 
+enum SortingType {
+    
+    case ranking
+    case alphabetical
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,6 +27,12 @@ class ViewController: UIViewController {
     var viewModel: ViewModel!
     var validationLetters = [Letter]()
     var excludeText = ""
+    
+    var sortingType: SortingType = .ranking {
+        didSet {
+            excludedTextSearch()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +125,15 @@ class ViewController: UIViewController {
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
         excludedTextSearch()
+    }
+    
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            sortingType = .ranking
+        default :
+            sortingType = .alphabetical
+        }
     }
 }
 
