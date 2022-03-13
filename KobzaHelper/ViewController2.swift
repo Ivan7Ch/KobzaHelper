@@ -48,6 +48,8 @@ class ViewController2: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         view.addGestureRecognizer(tap)
+        
+        excludeField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,13 +84,14 @@ class ViewController2: UIViewController {
                 self.viewModel = ViewModel(delegate: self, validationLetters: self.validationLetters)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 if let self = self {
                     self.resultField.text = self.viewModel.arr.joined(separator: ", ")
                     self.infoLabel.text = "Знайдено: \(self.viewModel.arr.count)"
                     self.activityIndicator.stopAnimating()
                 }
-            })
+                
+            }
         }
     }
     
@@ -106,6 +109,10 @@ class ViewController2: UIViewController {
         vc.words = viewModel.arr
         vc.greenIndexes = validationLetters.filter({ $0.type == .green }).map({ $0.location })
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        excludedTextSearch()
     }
 }
 

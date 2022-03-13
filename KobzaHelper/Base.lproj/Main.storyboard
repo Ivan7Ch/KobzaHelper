@@ -185,8 +185,8 @@
                                     <action selector="excludeLettersEditing:" destination="eEC-G9-vF4" eventType="editingChanged" id="EhE-P1-LRy"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="_" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JxX-H2-nai">
-                                <rect key="frame" x="10" y="265" width="394" height="621"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="_" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="JxX-H2-nai">
+                                <rect key="frame" x="10" y="265" width="394" height="587"/>
                                 <color key="backgroundColor" red="0.078431372549019607" green="0.0" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -225,11 +225,11 @@
                             <constraint firstItem="JhI-5p-PC0" firstAttribute="leading" secondItem="ItB-Yq-Du4" secondAttribute="leading" constant="17" id="1LN-rd-6Wd"/>
                             <constraint firstItem="U9f-P9-CIT" firstAttribute="centerX" secondItem="hcB-0l-e4z" secondAttribute="centerX" id="2AB-JU-FUp"/>
                             <constraint firstItem="U9f-P9-CIT" firstAttribute="top" secondItem="JhI-5p-PC0" secondAttribute="bottom" constant="17" id="3fV-n9-g6k"/>
+                            <constraint firstItem="ItB-Yq-Du4" firstAttribute="bottom" secondItem="JxX-H2-nai" secondAttribute="bottom" constant="10" id="41U-gW-yp6"/>
                             <constraint firstItem="7UG-gY-evQ" firstAttribute="top" secondItem="ItB-Yq-Du4" secondAttribute="top" constant="10" id="4k7-Fa-V6d"/>
                             <constraint firstItem="7UG-gY-evQ" firstAttribute="centerX" secondItem="hcB-0l-e4z" secondAttribute="centerX" id="4wM-Wi-083"/>
                             <constraint firstItem="JxX-H2-nai" firstAttribute="leading" secondItem="ItB-Yq-Du4" secondAttribute="leading" constant="10" id="5cc-Gr-XY1"/>
                             <constraint firstItem="OBQ-8k-LqG" firstAttribute="leading" secondItem="X5E-Z3-NOe" secondAttribute="trailing" constant="10" id="8gL-ja-Gb7"/>
-                            <constraint firstAttribute="bottom" secondItem="JxX-H2-nai" secondAttribute="bottom" constant="10" id="D3X-UV-L8t"/>
                             <constraint firstItem="JxX-H2-nai" firstAttribute="top" secondItem="JhI-5p-PC0" secondAttribute="bottom" constant="5" id="LGJ-5L-ILv"/>
                             <constraint firstItem="OBQ-8k-LqG" firstAttribute="centerY" secondItem="X5E-Z3-NOe" secondAttribute="centerY" id="Mjm-ip-bMn"/>
                             <constraint firstItem="ItB-Yq-Du4" firstAttribute="trailing" secondItem="OBQ-8k-LqG" secondAttribute="trailing" constant="10" id="Oyr-53-XjL"/>
