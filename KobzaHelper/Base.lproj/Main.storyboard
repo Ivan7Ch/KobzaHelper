@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -66,7 +65,7 @@
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Exclude letters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5E-Z3-NOe">
-                                <rect key="frame" x="10" y="206" width="343.5" height="40.5"/>
+                                <rect key="frame" x="10" y="206" width="394" height="40.5"/>
                                 <color key="backgroundColor" red="0.078431372549019607" green="0.0" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40.5" id="sgB-Dn-kUT"/>
@@ -92,21 +91,6 @@
                                 <color key="textColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.97115189825930359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBQ-8k-LqG">
-                                <rect key="frame" x="363.5" y="206" width="40.5" height="40.5"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="OBQ-8k-LqG" secondAttribute="height" id="S57-zf-Bj0"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="default"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="excludedTextSearch" destination="eEC-G9-vF4" eventType="touchUpInside" id="I0p-eH-fjt"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="U9f-P9-CIT">
                                 <rect key="frame" x="197" y="309.5" width="20" height="20"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,10 +119,7 @@
                             <constraint firstItem="7UG-gY-evQ" firstAttribute="top" secondItem="ItB-Yq-Du4" secondAttribute="top" constant="10" id="4k7-Fa-V6d"/>
                             <constraint firstItem="7UG-gY-evQ" firstAttribute="centerX" secondItem="hcB-0l-e4z" secondAttribute="centerX" id="4wM-Wi-083"/>
                             <constraint firstItem="JxX-H2-nai" firstAttribute="leading" secondItem="ItB-Yq-Du4" secondAttribute="leading" constant="10" id="5cc-Gr-XY1"/>
-                            <constraint firstItem="OBQ-8k-LqG" firstAttribute="leading" secondItem="X5E-Z3-NOe" secondAttribute="trailing" constant="10" id="8gL-ja-Gb7"/>
                             <constraint firstItem="JxX-H2-nai" firstAttribute="top" secondItem="JhI-5p-PC0" secondAttribute="bottom" constant="5" id="LGJ-5L-ILv"/>
-                            <constraint firstItem="OBQ-8k-LqG" firstAttribute="centerY" secondItem="X5E-Z3-NOe" secondAttribute="centerY" id="Mjm-ip-bMn"/>
-                            <constraint firstItem="ItB-Yq-Du4" firstAttribute="trailing" secondItem="OBQ-8k-LqG" secondAttribute="trailing" constant="10" id="Oyr-53-XjL"/>
                             <constraint firstItem="7UG-gY-evQ" firstAttribute="leading" secondItem="ItB-Yq-Du4" secondAttribute="leading" constant="10" id="X28-7U-nZ4"/>
                             <constraint firstItem="JxX-H2-nai" firstAttribute="top" secondItem="tzR-CY-wMC" secondAttribute="bottom" constant="10" id="Y9j-WN-5ak"/>
                             <constraint firstItem="X5E-Z3-NOe" firstAttribute="leading" secondItem="ItB-Yq-Du4" secondAttribute="leading" constant="10" id="Z3H-1x-p2h"/>
@@ -147,7 +128,7 @@
                             <constraint firstItem="X5E-Z3-NOe" firstAttribute="top" secondItem="7UG-gY-evQ" secondAttribute="bottom" constant="8" symbolic="YES" id="hsM-pX-gTd"/>
                             <constraint firstItem="tzR-CY-wMC" firstAttribute="top" secondItem="X5E-Z3-NOe" secondAttribute="bottom" constant="10" id="ih1-jX-MZd"/>
                             <constraint firstItem="ItB-Yq-Du4" firstAttribute="trailing" secondItem="JxX-H2-nai" secondAttribute="trailing" constant="10" id="jnz-qM-J0x"/>
-                            <constraint firstItem="OBQ-8k-LqG" firstAttribute="height" secondItem="X5E-Z3-NOe" secondAttribute="height" id="se0-Bw-wDQ"/>
+                            <constraint firstItem="X5E-Z3-NOe" firstAttribute="centerX" secondItem="hcB-0l-e4z" secondAttribute="centerX" id="wjY-bP-a5F"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Кобза помічник" largeTitleDisplayMode="always" id="dH7-M7-i6c">
@@ -172,7 +153,6 @@
                         <outlet property="excludeField" destination="X5E-Z3-NOe" id="vUm-XO-nDH"/>
                         <outlet property="infoLabel" destination="JhI-5p-PC0" id="LvE-i1-unZ"/>
                         <outlet property="resultField" destination="JxX-H2-nai" id="Zif-z1-azh"/>
-                        <outlet property="searchButton" destination="OBQ-8k-LqG" id="v1y-Pc-kox"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b57-cB-tqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -202,7 +182,7 @@
 
 3. Введіть у велике поле вводу всі літери, яких немає в загаданому слові.
 
-4. Натисніть кнопку пошуку, щоб побачити всі пропоновані слова, які відповідають введеним фільтрам.</string>
+Всі пропоновані слова, які відповідають введеним фільтрам, відображатимуться у нижньому текстовому полі.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -356,12 +336,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

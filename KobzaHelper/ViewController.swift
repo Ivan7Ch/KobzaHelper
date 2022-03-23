@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultField: UITextView!
     @IBOutlet weak var excludeField: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var viewModel: ViewModel!
@@ -30,7 +29,7 @@ class ViewController: UIViewController {
     
     var sortingType: SortingType = .ranking {
         didSet {
-            excludedTextSearch()
+            filterWords()
         }
     }
 
@@ -48,9 +47,6 @@ class ViewController: UIViewController {
         resultField.layer.cornerRadius = 5
         resultField.textColor = .white
         
-        searchButton.layer.cornerRadius = 5
-        searchButton.setTitle("", for: .normal)
-        
         excludeField.attributedPlaceholder = NSAttributedString(string: "_", attributes: attributes)
         
         activityIndicator.hidesWhenStopped = true
@@ -67,7 +63,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        excludedTextSearch()
+        filterWords()
     }
     
     @objc func tapAction() {
@@ -78,7 +74,7 @@ class ViewController: UIViewController {
         excludeText = sender.text ?? ""
     }
     
-    @IBAction func excludedTextSearch() {
+    func filterWords() {
         DispatchQueue.main.async { [weak self] in
             self?.activityIndicator.startAnimating()
         }
@@ -110,7 +106,7 @@ class ViewController: UIViewController {
     @IBAction func clearButtonAction() {
         excludeText = ""
         validationLetters = []
-        excludedTextSearch()
+        filterWords()
         excludeField.text = ""
         collectionView.reloadData()
     }
@@ -124,7 +120,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
-        excludedTextSearch()
+        filterWords()
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -207,7 +203,7 @@ class GreenInputCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        textField.text = "_"
+        textField.text = ""
         textField.attributedPlaceholder = NSAttributedString(string: "_", attributes: attributes)
     }
     
@@ -243,6 +239,6 @@ class GreenInputCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        vc.excludedTextSearch()
+        vc.filterWords()
     }
 }
