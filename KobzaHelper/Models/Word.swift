@@ -33,6 +33,11 @@ struct Word: Codable {
     var string: String {
         return letters.joined()
     }
+    
+    var isLocked: Bool {
+        let isAllowed = UserDefaults.standard.bool(forKey: "isAllowed")
+        return isAllowed ? false : rating % 2 == 0
+    }
 }
 
 extension Array where Element == Word {

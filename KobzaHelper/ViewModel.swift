@@ -47,7 +47,6 @@ class ViewModel {
             item = element
         }
         
-        
         var word = [Letter]()
         for (index, value) in item.letters.enumerated() {
             let newLetter = Letter(char: value, location: index, type: .black)

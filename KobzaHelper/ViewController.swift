@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var excludeField: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var unlockButton: UIButton!
     
     var viewModel: ViewModel!
     var validationLetters = [Letter]()
@@ -46,6 +47,7 @@ class ViewController: UIViewController {
         infoLabel.text = ""
         resultField.layer.cornerRadius = 5
         resultField.textColor = .white
+        resultField.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         
         excludeField.attributedPlaceholder = NSAttributedString(string: "_", attributes: attributes)
         
@@ -58,6 +60,8 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         excludeField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        unlockButton.layer.cornerRadius = 5
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,8 +98,9 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async { [weak self] in
                 if let self = self {
-                    self.resultField.text = self.viewModel.arr.joinedString()
-                    self.infoLabel.text = "Знайдено: \(self.viewModel.arr.count)"
+                    let filteredArr = self.viewModel.arr.filter({ !$0.isLocked })
+                    self.resultField.text = filteredArr.joinedString()
+                    self.infoLabel.text = "Доступно: \(filteredArr.count)\nЗнайдено всього: \(self.viewModel.arr.count)"
                     self.activityIndicator.stopAnimating()
                 }
                 
@@ -130,6 +135,13 @@ class ViewController: UIViewController {
         default :
             sortingType = .alphabetical
         }
+    }
+    
+    @IBAction func unlockButtonAction() {
+        UserDefaults.standard.set(true, forKey: "isAllowed")
+        
+        unlockButton.isHidden = true
+        filterWords()
     }
 }
 
@@ -188,57 +200,5 @@ extension ViewController: GameDelegate {
     func updateViews() {
         
         collectionView.reloadData()
-    }
-}
-
-
-class GreenInputCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var textField: UITextField!
-    
-    var vc: ViewController!
-    var ind = 0
-    var type: LetterType = .green
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        textField.text = ""
-        textField.attributedPlaceholder = NSAttributedString(string: "_", attributes: attributes)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        textField.attributedPlaceholder = NSAttributedString(string: "_", attributes: attributes)
-        textField.text = ""
-    }
-    
-    @IBAction func textFieldValueChanged(_ sender: UITextField) {
-        vc.validationLetters.removeAll(where: { $0.location == ind && $0.type == type })
-        
-        switch type {
-        case .green:
-            if let char = sender.text?.last {
-                let str = String(char)
-                sender.text = str.capitalized
-                vc.validationLetters.append(Letter(char: str, location: ind, type: type))
-            }
-            
-        case .yellow:
-            if let str = sender.text, !str.isEmpty {
-                let filteredStr = str.trimmingCharacters(in: .letters.inverted).lowercased()
-                sender.text = filteredStr.uppercased()
-                
-                for i in Array(filteredStr) {
-                    vc.validationLetters.append(Letter(char: String(i), location: ind, type: type))
-                }
-            }
-            
-        case .black:
-            return
-        }
-        
-        vc.filterWords()
     }
 }
