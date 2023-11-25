@@ -28,7 +28,7 @@ class ViewModel {
         
         self.delegate = delegate
         
-        initialArray = DataSource.words
+        initialArray = UserDefaultsHelper.shared.getWords()
         arr = initialArray
         
         selectedLetters = validationLetters

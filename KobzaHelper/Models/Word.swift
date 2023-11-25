@@ -25,7 +25,7 @@ struct Letter {
     }
 }
 
-struct Word: Codable {
+struct Word: Codable, Hashable {
 
     let letters: [String]
     let rating: Int

@@ -8,11 +8,15 @@
 import Foundation
 
 class DataSource {
+    static let shared = DataSource()
     
-    static var words = [Word]()
-        
-    static func setupWords() {
-        
+    private(set) var words: [Word] = []
+    
+    private init() {
+        loadWords()
+    }
+    
+    private func loadWords() {
         if let filepath = Bundle.main.path(forResource: "WordsJson", ofType: "json") {
             do {
                 let contents = try String(contentsOfFile: filepath)

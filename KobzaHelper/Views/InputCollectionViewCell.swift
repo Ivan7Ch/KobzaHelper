@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class GreenInputCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var textField: UITextField!

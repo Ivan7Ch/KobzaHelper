@@ -20,6 +20,9 @@
 		CE95C0A927DE77F700E6986B /* WordsJson.json in Resources */ = {isa = PBXBuildFile; fileRef = CE95C0A827DE77F700E6986B /* WordsJson.json */; };
 		CEBC3A5527CF8C2500D2B550 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC3A5427CF8C2500D2B550 /* HowToUseViewController.swift */; };
 		CEF17C2C27C16877003D88E4 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF17C2B27C16877003D88E4 /* ResultsViewController.swift */; };
+		F56BDD3F2B1238F3004D863D /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56BDD3E2B1238F3004D863D /* UserDefaultsHelper.swift */; };
+		F56BDD412B123E8A004D863D /* WordListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56BDD402B123E8A004D863D /* WordListTableViewCell.swift */; };
+		F56BDD432B123F72004D863D /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56BDD422B123F72004D863D /* WordListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		CE95C0A827DE77F700E6986B /* WordsJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WordsJson.json; sourceTree = "<group>"; };
 		CEBC3A5427CF8C2500D2B550 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
 		CEF17C2B27C16877003D88E4 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		F56BDD3E2B1238F3004D863D /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		F56BDD402B123E8A004D863D /* WordListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListTableViewCell.swift; sourceTree = "<group>"; };
+		F56BDD422B123F72004D863D /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +78,12 @@
 			children = (
 				CE94F35A27F06B10009F914B /* Views */,
 				CE95C0A527DE77A400E6986B /* Models */,
+				F56BDD3D2B1238E4004D863D /* Helpers */,
 				CE081BB727B29C7700CFD9D4 /* AppDelegate.swift */,
 				CE081BB927B29C7700CFD9D4 /* SceneDelegate.swift */,
 				CE081BD027B4633500CFD9D4 /* ViewController.swift */,
 				CEF17C2B27C16877003D88E4 /* ResultsViewController.swift */,
+				F56BDD422B123F72004D863D /* WordListViewController.swift */,
 				CE081BCB27B2DB2B00CFD9D4 /* ViewModel.swift */,
 				CE081BCD27B2DB4900CFD9D4 /* DataSource.swift */,
 				CE081BBD27B29C7700CFD9D4 /* Main.storyboard */,
@@ -92,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				CE94F35C27F06B41009F914B /* InputCollectionViewCell.swift */,
+				F56BDD402B123E8A004D863D /* WordListTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -102,6 +111,14 @@
 				CE95C0A627DE77AE00E6986B /* Word.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F56BDD3D2B1238E4004D863D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F56BDD3E2B1238F3004D863D /* UserDefaultsHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56BDD3F2B1238F3004D863D /* UserDefaultsHelper.swift in Sources */,
 				CE081BB827B29C7700CFD9D4 /* AppDelegate.swift in Sources */,
+				F56BDD432B123F72004D863D /* WordListViewController.swift in Sources */,
 				CE95C0A727DE77AE00E6986B /* Word.swift in Sources */,
 				CE081BCC27B2DB2B00CFD9D4 /* ViewModel.swift in Sources */,
 				CEF17C2C27C16877003D88E4 /* ResultsViewController.swift in Sources */,
@@ -184,6 +203,7 @@
 				CEBC3A5527CF8C2500D2B550 /* HowToUseViewController.swift in Sources */,
 				CE081BCE27B2DB4900CFD9D4 /* DataSource.swift in Sources */,
 				CE081BBA27B29C7700CFD9D4 /* SceneDelegate.swift in Sources */,
+				F56BDD412B123E8A004D863D /* WordListTableViewCell.swift in Sources */,
 				CE081BD127B4633500CFD9D4 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
