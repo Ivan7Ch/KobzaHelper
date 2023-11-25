@@ -100,7 +100,8 @@ class ViewController: UIViewController {
                 if let self = self {
                     let filteredArr = self.viewModel.arr.filter({ !$0.isLocked })
                     self.resultField.text = filteredArr.joinedString()
-                    self.infoLabel.text = "Доступно: \(filteredArr.count)\nЗнайдено всього: \(self.viewModel.arr.count)"
+//                    self.infoLabel.text = "Доступно: \(filteredArr.count)\nЗнайдено всього: \(self.viewModel.arr.count)"
+                    self.infoLabel.text = "Знайдено всього: \(self.viewModel.arr.count)"
                     self.activityIndicator.stopAnimating()
                 }
                 
